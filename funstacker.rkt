@@ -14,9 +14,9 @@
 (provide (rename-out [funstacker-module-begin #%module-begin]))
 
 (define (handle-args . args)
-  (for/fold ([stack-acc empty])
-            ([arg (in-list args)]
-             #:unless (void? arg))
+  (for/fold ([stack-acc empty]) ;; comeca acumulador stack-acc
+            ([arg (in-list args)] ;; para cada arg na lista args
+             #:unless (void? arg)) ;;itera a nao ser se for void, voids sao data types de datums q sao blank
     (cond
       [(number? arg) (cons arg stack-acc)]
       [(or (equal? * arg) (equal? + arg))
